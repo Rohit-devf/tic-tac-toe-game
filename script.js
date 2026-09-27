@@ -34,24 +34,47 @@ const show = (p1) => {
     hide.classList.remove("hide");
 
 }
-const checkwinner=()=>{
-    for (let pattern of winPatterns){
-           let p1=   boxes[pattern[0]].innerText;
-           let p2= boxes[pattern[1]].innerText;
-           let p3 = boxes[pattern[2]].innerText;
-if(p1!==""&& p2!=="" && p3 !==""){
-    if(p1===p2 && p2===p3){
-console.log("winner",p1);
-show(p1)
+const checkwinner = () => {
+
+    for (let pattern of winPatterns) {
+
+        let p1 = boxes[pattern[0]].innerText;
+        let p2 = boxes[pattern[1]].innerText;
+        let p3 = boxes[pattern[2]].innerText;
+
+        if (p1 !== "" && p2 !== "" && p3 !== "") {
+
+            if (p1 === p2 && p2 === p3) {
+
+                console.log("winner", p1);
+                show(p1);
+
+                boxes.forEach((box) => {
+                    box.disabled = true;
+                });
+
+                return;
+            }
+        }
+    }
+
+    let allFilled = true;
+
     boxes.forEach((box) => {
- box.disabled = true; });
+        if (box.innerText === "") {
+            allFilled = false;
+        }
+    });
 
+    if (allFilled) {
+        wow.innerText = "Match Drawn 🤝";
+        hide.classList.remove("hide");
+
+        boxes.forEach((box) => {
+            box.disabled = true;
+        });
     }
-
-    }
-}
-
-} 
+};
 
 reset.addEventListener("click", () => {
 
