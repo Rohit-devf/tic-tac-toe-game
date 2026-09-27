@@ -44,7 +44,7 @@ if(p1!==""&& p2!=="" && p3 !==""){
 console.log("winner",p1);
 show(p1)
     boxes.forEach((box) => {
- box.disabled = true;
+ box.disabled = true; });
 
     }
 
